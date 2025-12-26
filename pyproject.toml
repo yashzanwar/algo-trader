@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "algotrader"
+version = "0.1.0"
+description = "Lightweight algorithmic trading research framework"
+readme = "README.md"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.11"
+dependencies = [
+    "pandas>=2.1",
+    "numpy>=1.26",
+    "pyarrow>=14.0",
+    "pydantic>=2.5",
+    "yfinance>=0.2.40",
+]
+keywords = ["trading", "backtest", "finance", "quant"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "ruff>=0.6.0",
+    "black>=24.3",
+]
+
+[project.scripts]
+algotrader = "algotrader.runner:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 100
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "I", "B", "UP", "C4", "ISC", "TID", "DTZ"]
+ignore = ["B905"]
